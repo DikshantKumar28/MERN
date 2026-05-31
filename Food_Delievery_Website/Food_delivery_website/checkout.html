@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | ZaykaBox Gourmet Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar" aria-label="Store utility information">
+    <div class="store-hours">
+      <span>🕒 Store Hours: <strong>09:00 am - 06:00 pm</strong></span>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Pinterest">PIN</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="menu.html">Menu</a>
+        <a class="nav-link" href="restaurants.html">Restaurants</a>
+        <a class="nav-link" href="offers.html">Offers/Deals</a>
+        <a class="nav-link" href="track.html">Track Order</a>
+        <a class="nav-link" href="login.html">Login/Register</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Luxury Indicator">👑 Luxury</button>
+        <button class="cart-button" id="openCart" type="button" onclick="window.location.href='checkout.html'" aria-label="Open cart">
+          <span>🛒 Cart</span>
+          <strong class="cart-count">0</strong>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main style="max-width:1180px; margin: 40px auto; padding: 0 22px;">
+    <section class="page-head fade-up">
+      <p class="eyebrow">Checkout</p>
+      <h1>Finalize your order</h1>
+      <p>Confirm your delivery location on the map, provide details, and submit your order.</p>
+    </section>
+
+    <!-- Checkout Grid -->
+    <div style="display:grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr); gap: 24px; align-items:start;" class="fade-up delay-1">
+      
+      <!-- Checkout Form & Map -->
+      <section style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.05); display:flex; flex-direction:column; gap:16px;">
+        <h2 style="margin:0; font-size:1.4rem; font-weight:800;">Delivery Details</h2>
+        
+        <div style="border-radius:8px; overflow:hidden; border: 1px solid var(--line); height: 300px; position:relative;">
+          <!-- OpenStreetMap iframe for Connaught Place, New Delhi -->
+          <iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0" 
+            src="https://www.openstreetmap.org/export/embed.html?bbox=77.21443653106691%2C28.62939111979313%2C77.22525119781496%2C28.636611388424268&amp;layer=mapnik&amp;marker=28.6330013303666%2C77.21984386444092" 
+            style="border: none;">
+          </iframe>
+          <!-- Visual overlay marker representation -->
+          <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); pointer-events:none; font-size:32px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));" aria-hidden="true">
+            📍
+          </div>
+        </div>
+        
+        <form id="checkoutForm" style="display:flex; flex-direction:column; gap:16px;">
+          <div>
+            <label for="customerName">Full Name</label>
+            <input id="customerName" type="text" placeholder="John Doe" required style="width:100%">
+          </div>
+          <div>
+            <label for="customerPhone">Phone Number</label>
+            <input id="customerPhone" type="tel" placeholder="98765 43210" required style="width:100%">
+          </div>
+          <div>
+            <label for="customerAddress">Complete Address</label>
+            <textarea id="customerAddress" rows="3" placeholder="Flat number, building, street, landmark..." required style="width:100%"></textarea>
+          </div>
+          <button class="checkout-btn" type="submit" style="margin-top:10px; min-height:46px; border-radius:8px; font-weight:800;">Confirm & Pay</button>
+        </form>
+      </section>
+
+      <!-- Order Summary -->
+      <section style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.05); position:sticky; top:100px;">
+        <h2 style="margin:0 0 16px 0; font-size:1.4rem; font-weight:800;">Order Summary</h2>
+        <div id="checkoutItems" style="max-height:400px; overflow-y:auto; margin-bottom:20px; border-bottom:1px solid var(--line); padding-bottom:20px; display:flex; flex-direction:column; gap:12px;"></div>
+        
+        <div class="cart-summary" style="border:none; padding:0;">
+          <p style="display:flex; justify-content:space-between; margin:10px 0; font-size:0.95rem;"><span>Subtotal</span><strong id="subtotal">₹0</strong></p>
+          <p style="display:flex; justify-content:space-between; margin:10px 0; font-size:0.95rem;"><span>Taxes (5%)</span><strong id="taxAmount">₹0</strong></p>
+          <p style="display:flex; justify-content:space-between; margin:10px 0; font-size:0.95rem;"><span>Delivery Fee</span><strong id="deliveryFee">₹0</strong></p>
+          <hr style="border:0; border-top:1px solid var(--line); margin:15px 0;">
+          <p class="total" style="display:flex; justify-content:space-between; font-size:1.3rem; font-weight:800;"><span>Grand Total</span><strong id="grandTotal" style="color:var(--accent);">₹0</strong></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+      <p style="margin-top:14px;">Bringing the finest cuisines from top-rated restaurants straight to your doorstep.</p>
+    </div>
+    <div>
+      <h2>Links</h2>
+      <a class="nav-link" href="menu.html">Menu</a>
+      <a class="nav-link" href="restaurants.html">Restaurants</a>
+      <a class="nav-link" href="offers.html">Offers & Deals</a>
+    </div>
+    <div>
+      <h2>Support</h2>
+      <a class="nav-link" href="track.html">Track Order</a>
+      <a class="nav-link" href="login.html">Sign In</a>
+      <p style="margin-top:14px; font-size:0.8rem;">© 2026 ZaykaBox. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

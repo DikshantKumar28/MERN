@@ -1,0 +1,717 @@
+/* --- VARIABLES & BASE DESIGN --- */
+:root {
+  --primary-navy: #1A365D;
+  --primary-navy-light: #2C5282;
+  --primary-gold: #F59E0B;
+  --primary-gold-hover: #D97706;
+  --bg-light: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --text-dark: #1E293B;
+  --text-light: #F8FAFC;
+  --text-muted: #64748B;
+  --accent-red: #EF4444;
+  --accent-red-light: #FEE2E2;
+  --accent-green: #10B981;
+  --accent-green-light: #D1FAE5;
+  --border-radius: 14px;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- NAVIGATION HEADER --- */
+.top-nav {
+  background-color: var(--primary-navy);
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-area h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.school-icon {
+  font-size: 1.6rem;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 1rem;
+}
+
+.tab-link {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  outline: none;
+}
+
+.tab-link:hover {
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tab-link.active {
+  color: var(--primary-navy);
+  background-color: var(--primary-gold);
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(245, 158, 11, 0.3);
+}
+
+/* --- MAIN LAYOUT WINDOW --- */
+.content-container {
+  max-width: 960px;
+  width: 100%;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+  flex-grow: 1;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* --- DASHBOARD VIEW STYLE --- */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stats-card {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.03);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-speed);
+}
+
+.stats-card:hover {
+  transform: translateY(-3px);
+}
+
+.stats-card h3 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.stats-card p {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+}
+
+.stats-card.total { border-top: 5px solid var(--primary-navy); }
+.stats-card.present { border-top: 5px solid var(--accent-green); }
+.stats-card.absent { border-top: 5px solid var(--accent-red); }
+
+.stats-card.present p { color: var(--accent-green); }
+.stats-card.absent p { color: var(--accent-red); }
+
+/* Student Table Roster */
+.roster-container {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.roster-container h2 {
+  font-size: 1.25rem;
+  color: var(--primary-navy);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.student-table-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 240px;
+  padding: 0.8rem 1rem;
+  background: var(--bg-light);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.student-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 240px;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background 0.2s;
+}
+
+.student-row:last-child {
+  border-bottom: none;
+}
+
+.student-row:hover {
+  background: rgba(0,0,0,0.01);
+}
+
+.row-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #E2E8F0;
+}
+
+.row-details h4 {
+  font-size: 0.95rem;
+  color: var(--primary-navy);
+  font-weight: 600;
+}
+
+.row-details p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* Three-way segmented switch */
+.status-switch {
+  display: flex;
+  background: var(--bg-light);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 0.2rem;
+  gap: 0.2rem;
+}
+
+.switch-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.switch-btn:hover {
+  color: var(--primary-navy);
+}
+
+.switch-btn.active.unmarked {
+  background: #E2E8F0;
+  color: var(--text-muted);
+}
+
+.switch-btn.active.present {
+  background: var(--accent-green);
+  color: white;
+}
+
+.switch-btn.active.absent {
+  background: var(--accent-red);
+  color: white;
+}
+
+/* --- FLASHCARD TRACKER VIEW STYLE --- */
+.flashcard-deck-wrapper {
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deck-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.deck-header h2 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.btn-soft-reset {
+  background: transparent;
+  border: none;
+  color: var(--primary-navy-light);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-soft-reset:hover {
+  text-decoration: underline;
+  color: var(--primary-navy);
+}
+
+/* 3D Flashcard Shell */
+.flashcard-container {
+  width: 100%;
+  height: 380px;
+  perspective: 1000px;
+  margin-bottom: 2rem;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.flashcard-container.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-card);
+  border: 2px solid var(--primary-gold);
+  box-shadow: var(--card-shadow);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #F0F4F8;
+  justify-content: space-between;
+}
+
+.card-avatar-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--bg-light);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.card-avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-face h3 {
+  font-size: 1.4rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.25rem;
+}
+
+.card-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
+}
+
+.back-details {
+  width: 100%;
+  text-align: left;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.back-details p {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
+}
+
+.back-details p:last-child {
+  margin-bottom: 0;
+}
+
+.status-tag {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-tag.unmarked { color: var(--text-muted); }
+.status-tag.present { color: var(--accent-green); }
+.status-tag.absent { color: var(--accent-red); }
+
+/* Card progression buttons */
+.deck-controls {
+  display: flex;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.btn-action {
+  flex: 1;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn-action:active {
+  transform: scale(0.98);
+}
+
+.btn-action.absent {
+  background-color: var(--accent-red);
+  color: white;
+}
+
+.btn-action.absent:hover {
+  background-color: #DC2626;
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.25);
+}
+
+.btn-action.present {
+  background-color: var(--accent-green);
+  color: white;
+}
+
+.btn-action.present:hover {
+  background-color: #059669;
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* Animations for Progression */
+@keyframes slideOutLeft {
+  0% { transform: translate(0, 0) rotate(0); opacity: 1; }
+  100% { transform: translate(-120%, 30px) rotate(-15deg); opacity: 0; }
+}
+
+@keyframes slideOutRight {
+  0% { transform: translate(0, 0) rotate(0); opacity: 1; }
+  100% { transform: translate(120%, 30px) rotate(15deg); opacity: 0; }
+}
+
+@keyframes slideInUp {
+  0% { transform: translateY(20px) scale(0.95); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.card-slide-left {
+  animation: slideOutLeft 0.35s ease-in forwards;
+}
+
+.card-slide-right {
+  animation: slideOutRight 0.35s ease-in forwards;
+}
+
+.card-slide-in {
+  animation: slideInUp 0.35s ease-out forwards;
+}
+
+/* --- DECK COMPLETION SCREEN --- */
+.completion-card {
+  display: none;
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--accent-green);
+  box-shadow: var(--card-shadow);
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.completion-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.completion-card h2 {
+  font-size: 1.5rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.5rem;
+}
+
+.completion-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.completion-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.completion-stats div {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.completion-stats div span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+}
+
+.completion-stats div:first-child span { color: var(--accent-green); }
+.completion-stats div:last-child span { color: var(--accent-red); }
+
+.btn-action.primary {
+  background-color: var(--primary-navy);
+  color: white;
+}
+
+.btn-action.primary:hover {
+  background-color: var(--primary-navy-light);
+}
+
+/* --- RESPONSIVENESS RULES --- */
+@media (max-width: 600px) {
+  .top-nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+  }
+  
+  .student-table-header, .student-row {
+    grid-template-columns: 60px 1fr 140px;
+    gap: 0.5rem;
+  }
+
+  .switch-btn {
+    padding: 0.4rem 0.25rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* --- DATE SELECTOR STYLING --- */
+.date-select-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.date-select-container label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.date-picker {
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.date-picker::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* --- STUDENT DETAILS MODAL --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: var(--bg-card);
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--primary-gold);
+  width: 90%;
+  max-width: 440px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  position: relative;
+  animation: modalScaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
+}
+
+@keyframes modalScaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition-speed);
+}
+
+.close-modal:hover {
+  color: var(--text-dark);
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--bg-light);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-bottom: 1.2rem;
+}
+
+.modal-body h3 {
+  font-size: 1.4rem;
+  color: var(--primary-navy);
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
+
+.modal-roll {
+  font-size: 0.85rem;
+  color: var(--primary-gold-hover);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.2rem;
+}
+
+.modal-info-grid {
+  width: 100%;
+  background: var(--bg-light);
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: left;
+}
+
+.modal-info-grid p {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+  padding-bottom: 0.4rem;
+}
+
+.modal-info-grid p:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal-info-grid strong {
+  color: var(--primary-navy);
+}
+
+/* Clickable Student Rows */
+.student-row {
+  cursor: pointer;
+}
+
+.row-actions {
+  cursor: default; /* Disable cursor click pointer in toggles */
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offers & Deals | ZaykaBox Gourmet Promotions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar" aria-label="Store utility information">
+    <div class="store-hours">
+      <span>🕒 Store Hours: <strong>09:00 am - 06:00 pm</strong></span>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Pinterest">PIN</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="menu.html">Menu</a>
+        <a class="nav-link" href="restaurants.html">Restaurants</a>
+        <a class="nav-link" href="offers.html">Offers/Deals</a>
+        <a class="nav-link" href="track.html">Track Order</a>
+        <a class="nav-link" href="login.html">Login/Register</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Luxury Indicator">👑 Luxury</button>
+        <button class="cart-button" id="openCart" type="button" onclick="window.location.href='checkout.html'" aria-label="Open cart">
+          <span>🛒 Cart</span>
+          <strong class="cart-count">0</strong>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main style="max-width:1180px; margin: 40px auto; padding: 0 22px;">
+    <section class="page-head fade-up">
+      <p class="eyebrow">Hot Discounts</p>
+      <h1>Offers and Coupons For You</h1>
+      <p>Click on any deal card to copy the promo code and claim your gourmet discounts.</p>
+    </section>
+
+    <!-- Coupons Grid -->
+    <section class="offer-grid fade-up delay-1" aria-label="Gourmet Offers List">
+      <!-- Coupon 1 -->
+      <article class="coupon-card animate-on-scroll">
+        <div class="coupon-dashed-line"></div>
+        <div class="coupon-layout">
+          <div class="coupon-left">
+            <h3>50%</h3>
+            <span style="font-weight:900; font-size:0.8rem; text-transform:uppercase; color:var(--muted)">OFF</span>
+          </div>
+          <div class="coupon-right">
+            <h4>Super Gourmet Saver</h4>
+            <p>Get up to ₹150 off on orders above ₹400 across all menus.</p>
+            <div class="coupon-code">ZAYKABOX50</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Coupon 2 -->
+      <article class="coupon-card animate-on-scroll">
+        <div class="coupon-dashed-line"></div>
+        <div class="coupon-layout">
+          <div class="coupon-left">
+            <h3>FREE</h3>
+            <span style="font-weight:900; font-size:0.8rem; text-transform:uppercase; color:var(--muted)">DELIVERY</span>
+          </div>
+          <div class="coupon-right">
+            <h4>No Delivery Charge</h4>
+            <p>Order from any chef-special partner kitchen within 5km for free.</p>
+            <div class="coupon-code">FREEDEL</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Coupon 3 -->
+      <article class="coupon-card animate-on-scroll">
+        <div class="coupon-dashed-line"></div>
+        <div class="coupon-layout">
+          <div class="coupon-left">
+            <h3>₹100</h3>
+            <span style="font-weight:900; font-size:0.8rem; text-transform:uppercase; color:var(--muted)">CASHBACK</span>
+          </div>
+          <div class="coupon-right">
+            <h4>Flat Wallet Saver</h4>
+            <p>Get instant cashback on payments made via UPI wallets.</p>
+            <div class="coupon-code">UPIKITCHEN</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Coupon 4 -->
+      <article class="coupon-card animate-on-scroll">
+        <div class="coupon-dashed-line"></div>
+        <div class="coupon-layout">
+          <div class="coupon-left">
+            <h3>30%</h3>
+            <span style="font-weight:900; font-size:0.8rem; text-transform:uppercase; color:var(--muted)">OFF</span>
+          </div>
+          <div class="coupon-right">
+            <h4>Healthy Delights Promo</h4>
+            <p>Save 30% on healthy detox salads, quinoa and juices from Green Fork.</p>
+            <div class="coupon-code">HEALTHY30</div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+      <p style="margin-top:14px;">Bringing the finest cuisines from top-rated restaurants straight to your doorstep.</p>
+    </div>
+    <div>
+      <h2>Links</h2>
+      <a class="nav-link" href="menu.html">Menu</a>
+      <a class="nav-link" href="restaurants.html">Restaurants</a>
+      <a class="nav-link" href="offers.html">Offers & Deals</a>
+    </div>
+    <div>
+      <h2>Support</h2>
+      <a class="nav-link" href="track.html">Track Order</a>
+      <a class="nav-link" href="login.html">Sign In</a>
+      <p style="margin-top:14px; font-size:0.8rem;">© 2026 ZaykaBox. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- FAB -->
+  <button id="cartFab" class="cart-fab" aria-label="Go to checkout">
+    🛒
+    <span class="fab-count cart-count">0</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

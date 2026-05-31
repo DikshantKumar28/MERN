@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order | ZaykaBox Live Map Tracking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar" aria-label="Store utility information">
+    <div class="store-hours">
+      <span>🕒 Store Hours: <strong>09:00 am - 06:00 pm</strong></span>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Pinterest">PIN</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="menu.html">Menu</a>
+        <a class="nav-link" href="restaurants.html">Restaurants</a>
+        <a class="nav-link" href="offers.html">Offers/Deals</a>
+        <a class="nav-link" href="track.html">Track Order</a>
+        <a class="nav-link" href="login.html">Login/Register</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Luxury Indicator">👑 Luxury</button>
+        <button class="cart-button" id="openCart" type="button" onclick="window.location.href='checkout.html'" aria-label="Open cart">
+          <span>🛒 Cart</span>
+          <strong class="cart-count">0</strong>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main style="max-width:1180px; margin: 40px auto; padding: 0 22px;">
+    <section class="page-head fade-up">
+      <p class="eyebrow">Realtime Logistics</p>
+      <h1 id="trackHeading">Track Order</h1>
+      <p>Keep track of your fresh gourmet meals on their way from the kitchen stove to your dinner plate.</p>
+    </section>
+
+    <!-- Map & Progress Split Panel -->
+    <div class="tracking-panel fade-up delay-1" style="display:grid; grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr); gap: 24px;">
+      
+      <!-- Interactive OpenStreetMap Panel -->
+      <section style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.05); display:flex; flex-direction:column; gap:16px;">
+        <h2 style="margin:0; font-size:1.4rem; font-weight:800;">Delivery Route Map</h2>
+        
+        <div style="border-radius:8px; overflow:hidden; border: 1px solid var(--line); height: 420px; position:relative;">
+          <!-- Functional OpenStreetMap centering on Connaught Place, New Delhi -->
+          <iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0" 
+            src="https://www.openstreetmap.org/export/embed.html?bbox=77.214436%2C28.629391%2C77.225251%2C28.636611&amp;layer=mapnik&amp;marker=28.633001%2C77.219843" 
+            style="border: none;">
+          </iframe>
+          
+          <!-- Visual Overlay marker representing the rider delivery spot -->
+          <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); pointer-events:none; font-size:42px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); animation: bouncePin 2s infinite alternate;" aria-hidden="true">
+            🛵
+          </div>
+        </div>
+      </section>
+
+      <!-- Logistics Milestone Panel -->
+      <section style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.05); display:flex; flex-direction:column;">
+        <h2 style="margin:0 0 8px 0; font-size:1.4rem; font-weight:800;">Delivery Milestones</h2>
+        
+        <div style="border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:20px;">
+          <p style="margin:4px 0; font-size:0.9rem;">Destination: <strong id="trackAddress">Connaught Place Radial Road, New Delhi</strong></p>
+          <p style="margin:4px 0; font-size:0.9rem;">Total Value: <strong id="trackAmount">₹480</strong></p>
+        </div>
+
+        <!-- Progress Timeline -->
+        <ul class="tracking-timeline-list">
+          <li class="tracking-timeline-item" id="step-0">
+            <div class="tracking-timeline-icon">✓</div>
+            <div class="tracking-timeline-details">
+              <h3>Order Confirmed</h3>
+              <p>Kitchen accepted and is processing payment.</p>
+            </div>
+          </li>
+          <li class="tracking-timeline-item" id="step-1">
+            <div class="tracking-timeline-icon">🍳</div>
+            <div class="tracking-timeline-details">
+              <h3>Preparing Food</h3>
+              <p>Our top chef is cooking your gourmet ingredients.</p>
+            </div>
+          </li>
+          <li class="tracking-timeline-item" id="step-2">
+            <div class="tracking-timeline-icon">🛵</div>
+            <div class="tracking-timeline-details">
+              <h3>Out for Delivery</h3>
+              <p>Driver is rushing to your location.</p>
+            </div>
+          </li>
+          <li class="tracking-timeline-item" id="step-3">
+            <div class="tracking-timeline-icon">🏠</div>
+            <div class="tracking-timeline-details">
+              <h3>Arrived</h3>
+              <p>Gourmet delivery successfully completed.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+      <p style="margin-top:14px;">Bringing the finest cuisines from top-rated restaurants straight to your doorstep.</p>
+    </div>
+    <div>
+      <h2>Links</h2>
+      <a class="nav-link" href="menu.html">Menu</a>
+      <a class="nav-link" href="restaurants.html">Restaurants</a>
+      <a class="nav-link" href="offers.html">Offers & Deals</a>
+    </div>
+    <div>
+      <h2>Support</h2>
+      <a class="nav-link" href="track.html">Track Order</a>
+      <a class="nav-link" href="login.html">Sign In</a>
+      <p style="margin-top:14px; font-size:0.8rem;">© 2026 ZaykaBox. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <button id="cartFab" class="cart-fab" aria-label="Go to checkout">
+    🛒
+    <span class="fab-count cart-count">0</span>
+  </button>
+
+  <!-- Keyframe Pin Bounce Animation -->
+  <style>
+    @keyframes bouncePin {
+      0% { transform: translate(-50%, -50%) translateY(0); }
+      100% { transform: translate(-50%, -50%) translateY(-10px); }
+    }
+  </style>
+
+  <script src="script.js"></script>
+</body>
+</html>

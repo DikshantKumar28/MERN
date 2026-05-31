@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurants | ZaykaBox Elite Kitchens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar" aria-label="Store utility information">
+    <div class="store-hours">
+      <span>🕒 Store Hours: <strong>09:00 am - 06:00 pm</strong></span>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Pinterest">PIN</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="menu.html">Menu</a>
+        <a class="nav-link" href="restaurants.html">Restaurants</a>
+        <a class="nav-link" href="offers.html">Offers/Deals</a>
+        <a class="nav-link" href="track.html">Track Order</a>
+        <a class="nav-link" href="login.html">Login/Register</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Luxury Indicator">👑 Luxury</button>
+        <button class="cart-button" id="openCart" type="button" onclick="window.location.href='checkout.html'" aria-label="Open cart">
+          <span>🛒 Cart</span>
+          <strong class="cart-count">0</strong>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main style="max-width:1180px; margin: 40px auto; padding: 0 22px;">
+    <section class="page-head fade-up">
+      <p class="eyebrow">Premium Partners</p>
+      <h1>Explore kitchens near you</h1>
+      <p>Discover top-rated cuisines, sorted and filtered by your dining choices.</p>
+    </section>
+
+    <section class="content-shell fade-up delay-1" aria-label="Restaurants Grid Area">
+      <!-- Sidebar Filters -->
+      <aside class="filters" style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:24px;">
+        <div class="section-title" style="margin-bottom:20px;">
+          <p style="font-size:1.2rem; font-weight:800; margin:0;">Filters</p>
+        </div>
+        
+        <label for="searchInput">Search Cuisines</label>
+        <input id="searchInput" type="search" placeholder="Search biryani, pizza..." autocomplete="off">
+      </aside>
+
+      <!-- Listings Panel -->
+      <section class="restaurant-area">
+        <div class="restaurant-toolbar" style="display:block; margin-bottom:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:16px;">
+            <h2 id="resultHeading" style="margin:0; font-size:1.6rem; font-weight:800;">Popular near you</h2>
+            
+            <label class="toggle-switch">
+              <input type="checkbox" id="vegOnlyToggle">
+              <div class="toggle-slider"></div>
+              <span style="font-size:0.9rem; font-weight:700;">Veg Only</span>
+            </label>
+          </div>
+          
+          <div class="sorting-tabs">
+            <button id="sortTopRated" class="active">★ Top Rated</button>
+            <button id="sortCost">₹ Cost: Low to High</button>
+          </div>
+        </div>
+        
+        <!-- Restaurants Grid -->
+        <div class="restaurant-grid" id="restaurantGrid">
+          <!-- Rendered dynamically by script.js -->
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+      <p style="margin-top:14px;">Bringing the finest cuisines from top-rated restaurants straight to your doorstep.</p>
+    </div>
+    <div>
+      <h2>Links</h2>
+      <a class="nav-link" href="menu.html">Menu</a>
+      <a class="nav-link" href="restaurants.html">Restaurants</a>
+      <a class="nav-link" href="offers.html">Offers & Deals</a>
+    </div>
+    <div>
+      <h2>Support</h2>
+      <a class="nav-link" href="track.html">Track Order</a>
+      <a class="nav-link" href="login.html">Sign In</a>
+      <p style="margin-top:14px; font-size:0.8rem;">© 2026 ZaykaBox. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- FAB -->
+  <button id="cartFab" class="cart-fab" aria-label="Go to checkout">
+    🛒
+    <span class="fab-count cart-count">0</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

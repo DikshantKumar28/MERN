@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Tracker</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="logo-area">
+      <span class="school-icon">🏫</span>
+      <h1>Academy Tracker</h1>
+    </div>
+    <div class="header-right" style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+      <div class="date-select-container">
+        <label for="attendance-date">Date:</label>
+        <input type="date" id="attendance-date" class="date-picker">
+      </div>
+      <nav class="nav-tabs">
+        <button class="tab-link active" data-tab="dashboard">Dashboard</button>
+        <button class="tab-link" data-tab="flashcards">Flashcard Tracker</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main View Area -->
+  <main class="content-container">
+
+    <!-- View 1: Dashboard Tab -->
+    <section id="dashboard-view" class="tab-panel active">
+      <!-- Stats Dashboard Counters -->
+      <div class="stats-row">
+        <div class="stats-card total">
+          <h3>Total Roster</h3>
+          <p id="stat-total">0</p>
+        </div>
+        <div class="stats-card present">
+          <h3>Present Today</h3>
+          <p id="stat-present">0</p>
+        </div>
+        <div class="stats-card absent">
+          <h3>Absent Today</h3>
+          <p id="stat-absent">0</p>
+        </div>
+      </div>
+
+      <!-- Student Master Grid -->
+      <div class="roster-container">
+        <h2>Student Logs & Check-ins</h2>
+        <div class="student-table-header">
+          <div>Profile</div>
+          <div>Name & Roll Number</div>
+          <div>Mark Attendance</div>
+        </div>
+        <div id="roster-grid-body">
+          <!-- Dynamic student rows appended here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- View 2: Flashcard Tracker Tab -->
+    <section id="flashcards-view" class="tab-panel">
+      <div class="flashcard-deck-wrapper">
+        <div class="deck-header">
+          <h2 id="deck-progress-text">Student 1 of 5</h2>
+          <button class="btn-soft-reset" id="deck-reset-btn">Restart Deck</button>
+        </div>
+
+        <!-- 3D flipping card structure -->
+        <div class="flashcard-container" id="flashcard-card-box">
+          <div class="flashcard-inner">
+            <!-- Front Face -->
+            <div class="card-face card-front">
+              <div class="card-avatar-wrapper">
+                <img src="" id="card-front-img" alt="Student avatar" draggable="false">
+              </div>
+              <h3 id="card-front-name">Sophia Lee</h3>
+              <p class="card-hint">Click or Hover to Flip Details</p>
+            </div>
+            <!-- Back Face -->
+            <div class="card-face card-back">
+              <h3>Profile Info</h3>
+              <div class="back-details">
+                <p><strong>Roll Number:</strong> <span id="card-back-roll">A2026-01</span></p>
+                <p><strong>Class Section:</strong> Grade 10-A</p>
+                <p><strong>Status Today:</strong> <span id="card-back-status" class="status-tag">Unmarked</span></p>
+              </div>
+              <p class="card-hint">Click or Hover to Flip Front</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attendance marking controls -->
+        <div class="deck-controls">
+          <button class="btn-action absent" id="btn-card-absent">
+            Mark Absent
+          </button>
+          <button class="btn-action present" id="btn-card-present">
+            Mark Present
+          </button>
+        </div>
+
+        <!-- Deck complete screen -->
+        <div class="completion-card" id="completion-box">
+          <div class="completion-icon">🏆</div>
+          <h2>Session Completed!</h2>
+          <p>You have finished reviewing all student flashcards for today.</p>
+          <div class="completion-stats">
+            <div>
+              <span id="comp-present-txt">0</span> Present
+            </div>
+            <div>
+              <span id="comp-absent-txt">0</span> Absent
+            </div>
+          </div>
+          <button class="btn-action primary" id="btn-completion-close">Return to Dashboard</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Student Details Modal -->
+  <div id="details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-details-modal">&times;</span>
+      <div class="modal-body" id="details-modal-body">
+        <!-- Dynamically populated in script -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Script logic -->
+  <script src="script.js"></script>
+</body>
+</html>

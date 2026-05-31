@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZaykaBox | Elite Food Delivery Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar" aria-label="Store utility information">
+    <div class="store-hours">
+      <span>🕒 Store Hours: <strong>09:00 am - 06:00 pm</strong></span>
+    </div>
+    <div class="social-links">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Twitter">TW</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Pinterest">PIN</a>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand nav-link" href="index.html" aria-label="ZaykaBox Home">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation links (6 main paths) -->
+      <div class="nav-menu" id="navMenu">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="menu.html">Menu</a>
+        <a class="nav-link" href="restaurants.html">Restaurants</a>
+        <a class="nav-link" href="offers.html">Offers/Deals</a>
+        <a class="nav-link" href="track.html">Track Order</a>
+        <a class="nav-link" href="login.html">Login/Register</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Luxury Indicator">👑 Luxury</button>
+        <button class="cart-button" id="openCart" type="button" onclick="window.location.href='checkout.html'" aria-label="Open cart">
+          <span>🛒 Cart</span>
+          <strong id="cartCount" class="cart-count">0</strong>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section with Staggered Brick Pattern Background -->
+    <section class="page-view active" id="homePage" data-page="home">
+      <div style="max-width:1180px; margin: 40px auto; padding: 0 22px;">
+        <section class="hero hero-brick-bg">
+          
+          <!-- Gently spinning background SVGs -->
+          <svg class="floating-ingredient ingredient-1" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50 10 C30 35 15 50 15 70 C15 85 30 90 50 90 C70 90 85 85 85 70 C85 50 70 35 50 10" fill="#27ae60" />
+            <path d="M50 10 L50 90" stroke="#1e7e34" stroke-width="2" />
+          </svg>
+          <svg class="floating-ingredient ingredient-2" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="40" fill="#e74c3c" />
+            <circle cx="50" cy="50" r="30" fill="#c0392b" />
+            <circle cx="40" cy="40" r="5" fill="#f1c40f" />
+            <circle cx="60" cy="40" r="5" fill="#f1c40f" />
+            <circle cx="40" cy="60" r="5" fill="#f1c40f" />
+            <circle cx="60" cy="60" r="5" fill="#f1c40f" />
+          </svg>
+          <svg class="floating-ingredient ingredient-3" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M20 70 C30 80 50 85 70 70 C80 60 90 40 85 20 C75 25 65 30 50 25 C30 18 15 45 20 70 Z" fill="#c0392b" />
+            <path d="M85 20 C88 15 85 10 80 12 L75 16 Z" fill="#27ae60" />
+          </svg>
+
+          <div class="hero-copy" style="color: #ffffff; z-index: 5;">
+            <p class="eyebrow fade-up" style="color:#ffd166;">Premium Gastronomy</p>
+            <h1 class="fade-up delay-1" style="color: #ffffff;">Flavor Delivered Straight to Your Door.</h1>
+            <p class="fade-up delay-2" style="color: #cdbba9;">Discover gourmet foods, explore premium partner kitchens, track orders live, and experience flavor like never before.</p>
+            
+            <form class="search-panel fade-up delay-3" id="searchForm" style="background: rgba(21, 19, 15, 0.85); border-color: rgba(255, 255, 255, 0.1);">
+              <label for="searchInput" style="color: #cdbba9;">Search restaurant, dish, or cuisine</label>
+              <div class="search-row">
+                <input id="searchInput" type="search" placeholder="Try biryani, pizza, sushi..." autocomplete="off">
+                <button type="submit">Find food</button>
+              </div>
+            </form>
+            
+            <div class="hero-stats fade-up delay-3" aria-label="Delivery stats" style="margin-top: 30px;">
+              <span style="background:rgba(255,255,255,0.08); color:#f7efe5;"><strong style="color:#ffd166;">25 min</strong> avg delivery</span>
+              <span style="background:rgba(255,255,255,0.08); color:#f7efe5;"><strong style="color:#ffd166;">120+</strong> partner kitchens</span>
+              <span style="background:rgba(255,255,255,0.08); color:#f7efe5;"><strong style="color:#ffd166;">4.9</strong> user rating</span>
+            </div>
+            
+            <div style="margin-top: 40px;" class="fade-up delay-3">
+              <a href="restaurants.html" class="cta-order-now">ORDER NOW →</a>
+            </div>
+          </div>
+
+          <div class="hero-media" aria-hidden="true" style="box-shadow:none; background:transparent; display:flex; justify-content:center; align-items:center;">
+            <div class="pizza-container">
+              <img class="floating-pizza" src="https://images.unsplash.com/photo-1513104890138-7c749659a591" alt="Delicious Pizza">
+              <div class="gold-skewed-badge">50% OFF</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Feature cards -->
+      <section class="feature-band" aria-label="How it works">
+        <article class="animate-on-scroll">
+          <span>01</span>
+          <h2>Select Kitchen</h2>
+          <p>Find premium dining places near you, filtered by ratings, delivery times, and menus.</p>
+        </article>
+        <article class="animate-on-scroll">
+          <span>02</span>
+          <h2>Add Gourmet Meals</h2>
+          <p>Explore split menus, select customized dishes, and track items in your session cart.</p>
+        </article>
+        <article class="animate-on-scroll">
+          <span>03</span>
+          <h2>Live Tracking</h2>
+          <p>Enjoy superfast doorstep delivery, complete with live map tracking overlays.</p>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand nav-link" href="index.html">
+        <span class="brand-mark">Zb</span>
+        <span>ZaykaBox</span>
+      </a>
+      <p style="margin-top:14px;">Bringing the finest cuisines from top-rated restaurants straight to your doorstep.</p>
+    </div>
+    <div>
+      <h2>Links</h2>
+      <a class="nav-link" href="menu.html">Menu</a>
+      <a class="nav-link" href="restaurants.html">Restaurants</a>
+      <a class="nav-link" href="offers.html">Offers & Deals</a>
+    </div>
+    <div>
+      <h2>Support</h2>
+      <a class="nav-link" href="track.html">Track Order</a>
+      <a class="nav-link" href="login.html">Sign In</a>
+      <p style="margin-top:14px; font-size:0.8rem;">© 2026 ZaykaBox. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <button id="cartFab" class="cart-fab" aria-label="Go to checkout">
+    🛒
+    <span class="fab-count cart-count">0</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
